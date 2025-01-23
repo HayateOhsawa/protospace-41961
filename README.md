@@ -1,6 +1,10 @@
 # テーブル設計
 
+<<<<<<< Updated upstream
 ## usersテーブル
+=======
+
+>>>>>>> Stashed changes
 
 | Column              | Type       | options                   |
 | ------------------- | ---------- | ------------------------- |
