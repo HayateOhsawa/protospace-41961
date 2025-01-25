@@ -1,4 +1,7 @@
 class PrototypesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy]
+  before_action :verify_post_owner, only: [:edit, :update, :destroy]
   def index
     @prototypes = Prototype.all
   end
@@ -45,5 +48,16 @@ class PrototypesController < ApplicationController
 
   def prototype_params
     params.require(:prototype).permit(:name, :email, :encrypted_password, :title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
+  end
+
+  def set_prototype
+    @prototype = Prototype.find(params[:id])
+  end
+
+  def verify_post_owner
+    unless @prototype.user == current_user
+      # 投稿者以外の場合はトップページにリダイレクト
+      redirect_to action: :index
+    end
   end
 end
