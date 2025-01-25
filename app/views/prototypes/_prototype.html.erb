@@ -1,6 +1,8 @@
 <div class="card">
   <% if prototype.image.attached? %>
-    <%= image_tag prototype.image, alt: "#{prototype.title} image" %>
+    <%= link_to prototype_path(prototype) do %>
+      <%= image_tag prototype.image, alt: "#{prototype.title} image" %>
+    <% end %>
   <% end %>
   <div class="card__body">
     <%= link_to prototype.title, prototype_path(prototype), class: :card__title%>
@@ -8,6 +10,6 @@
       <%= prototype.catch_copy %>
       <%= prototype.concept %>
     </p>
-    <%= link_to prototype.user.name, prototype_path(prototype), class: :card__user %>
+    <%= link_to prototype.user.name, prototype_path(prototype.user.id), class: :card__user %>
   </div>
 </div>
