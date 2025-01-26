@@ -10,6 +10,7 @@
         <div class="field">
           <%= f.label :email, "メールアドレス" %><br />
           <%= f.email_field :email, id:"user_email", autofocus: true, autocomplete: "email" %>
+          <%= @user.errors[:email].any? ? "※このメールアドレスはすでに使われています" : "" %>
         </div>
 
         <div class="field">
