@@ -8,7 +8,6 @@
     <%= link_to prototype.title, prototype_path(prototype), class: :card__title%>
     <p class="card__summary">
       <%= prototype.catch_copy %>
-      <%= prototype.concept %>
     </p>
     <%= link_to prototype.user.name, user_path(prototype.user_id), class: :card__user %>
   </div>
